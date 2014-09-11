@@ -1,0 +1,23 @@
+\documentclass{article}
+
+\begin{document}
+
+\title{Assignment 1: Decision Tree Induction}
+\author{Tuan Anh Pham}
+\date{\today}
+
+\maketitle
+
+\part{1. Representing Boolean Functions}
+
+\chapter{chapter}
+
+\section{section}
+
+\subsection{subsection}
+
+\paragraph{paragraph}
+
+\subparagraph{subparagraph}
+
+\end{document}
