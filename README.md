@@ -1,4 +1,4 @@
-# Assignment 1: Decision Tree Induction
+# [Assignment 1: Decision Tree Induction](http://isaacbutterfield.github.io/pdf/prompt.pdf)
 
 - Class: CS 4375 - Introduction to Machine Learning
 - Instructor: Dr. Vincent Ng
