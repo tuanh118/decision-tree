@@ -2,13 +2,13 @@
 # A function that takes a dataframe of the root and a list of
 #   available attributes as input, then recursively learns a 
 #   decision tree from that root using the ID3 algorithm
-learn.tree <- function(df) {
+learn.tree <- function(df, depth) {
   # Basis: If the class field is pure or there is no available
   #   attribute, return the major class of the dataframe
   df <- as.data.frame(df)
   
   if (pure(df[, length(df)]) || length(colnames(df)) == 1) {
-    cat("Choose ", majority(df[, length(df)]), "\n\n")
+    cat(majority(df[, length(df)]))
   } else {
     # Recursion
     ce <- cond.entropy(df)
@@ -22,10 +22,11 @@ learn.tree <- function(df) {
       new_df <- df[df[, min.attr.index] == val, ]
       
       # Noti
-      cat(colnames(df[min.attr.index]), " = ", val, "\n")
+      margin <- paste(rep("| ", depth), collapse = "")
+      cat("\n", margin, colnames(df[min.attr.index]), " = ", val, " : ")
       
       # Recursive call
-      learn.tree(new_df[, -min.attr.index])
+      learn.tree(new_df[, -min.attr.index], depth + 1)
     }
   }
 }
