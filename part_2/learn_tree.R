@@ -1,4 +1,3 @@
-
 # A function that takes a dataframe of the root and a list of
 #   available attributes as input, then recursively learns a 
 #   decision tree from that root using the ID3 algorithm
