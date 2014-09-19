@@ -1,4 +1,5 @@
 # Import libraries
+source("Tree.R")
 source("learn_tree_2.R")
 
 # Training set
@@ -15,6 +16,7 @@ head(new.train)
 
 train.pred <- tree.predict(tree.model, new.train)$predict
 t <- table(train.pred, train$class)
+t
 (t[1] + t[4]) / sum(t)
 
 ##
