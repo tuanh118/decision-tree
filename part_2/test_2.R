@@ -17,13 +17,7 @@ head(new.train)
 train.pred <- tree.predict(tree.model, new.train)$predict
 t <- table(train.pred, train$class)
 t
-(t[1] + t[4]) / sum(t)
-
-##
-train.compact <- new.train[c(11:15), ]
-train.compact
-
-train.c.pred <- tree.predict(tree.model, train.compact)$predict
+(t[1] + t[4]) / sum(t)sdfsadfasfasdfasfasfsadf
 
 ## Predict test
 test <- read.table("test.dat", header = T)
