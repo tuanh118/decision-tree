@@ -26,16 +26,27 @@ setMethod(toString,
             result
           })
 
-# Train
-setGeneric("tree.predict", function(tree, df) standardGeneric("tree.predict"))
-setMethod(tree.predict,
+## Preprocess data frame before prediction
+preprocess.df <- function(df) {
+  df$status <- 1
+  df$predict <- -1
+  df
+}
+
+# Tree Predict
+predict.tree <- function(tree, df) {
+  predict.tree.rec(tree, preprocess.df(df))$predict
+}
+
+setGeneric("predict.tree.rec", function(tree, df) standardGeneric("predict.tree.rec"))
+setMethod(predict.tree.rec,
           signature(tree = "Leaf", df = "data.frame"),
           function(tree, df) {
             if (nrow(df[df$status == 1, ]) != 0)
               df[df$status == 1, ]$predict <- tree@label
             df
           })
-setMethod(tree.predict,
+setMethod(predict.tree.rec,
           signature(tree = "Branch", df = "data.frame"),
           function(tree, df) {
             index <- which(colnames(df) == tree@attr)
@@ -44,13 +55,13 @@ setMethod(tree.predict,
             result <- df
             if (nrow(result[result[, index] == 1 & result$status == 1, ]) != 0)
               result[result[, index] == 1 & result$status == 1, ]$status <- 0
-            result <- tree.predict(tree@zero, result)
+            result <- predict.tree.rec(tree@zero, result)
             
             # attr = one
             result$status <- df$status
             if (nrow(result[result[, index] == 0 & result$status == 1, ]) != 0)
               result[result[, index] == 0 & result$status == 1, ]$status <- 0
-            result <- tree.predict(tree@one, result)
+            result <- predict.tree.rec(tree@one, result)
             
             result
           })
