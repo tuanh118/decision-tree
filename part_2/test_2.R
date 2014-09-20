@@ -3,7 +3,7 @@ source("Tree.R")
 source("learn_tree_2.R")
 
 # Training set
-train <- read.table("train.dat", header = T)
+train <- read.table("train2.dat", header = T)
 
 ## Learn
 tree.model <- learn.tree.2(train, 0)
@@ -26,7 +26,7 @@ train.compact
 train.c.pred <- tree.predict(tree.model, train.compact)$predict
 
 ## Predict test
-test <- read.table("test.dat", header = T)
+test <- read.table("test2.dat", header = T)
 head(test)
 
 new.test <- test
