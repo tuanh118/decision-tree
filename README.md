@@ -8,11 +8,16 @@
 # Contents
 
 There are two folders in this repository, each for one part of the assignment:
-- Part I: Written Problems
-- Part II: Programming
+- **part_1**: Written Problems
+- **part_2**: Programming
+    - **part_2/cond_entropy.R**: Compute conditional entropy value
+    - **part_2/Tree.R**: Define ID3 Tree class
+    - **part_2/learn_tree.R**: Learn a ID3 Tree
 
-# Compile and Run
-<pre><code>Rscript ID3_decision_tree.R <TRAIN_FILE> <TEST_FILE></code></pre>
+# Run
+```
+Rscript ID3_decision_tree.R <TRAIN_FILE> <TEST_FILE>
+```
 
 # Platforms
 - Windows 8.1
