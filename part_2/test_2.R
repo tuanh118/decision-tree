@@ -8,6 +8,7 @@ train <- read.table("train2.dat", header = T)
 
 ## Learn
 tree.model <- learn.tree(train)
+cat(toString(tree.model))
 
 ## Predict train
 train.pred <- predict.tree(tree.model, train)
