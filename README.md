@@ -11,6 +11,13 @@ There are two folders in this repository, each for one part of the assignment:
 - Part I: Written Problems
 - Part II: Programming
 
+# Compile and Run
+<pre><code>Rscript ID3_decision_tree.R <TRAIN_FILE> <TEST_FILE></code></pre>
+
+# Platforms
+- Windows 8.1
+- Ubuntu 14.04
+
 # Contributors
 
 - Isaac Butterfield

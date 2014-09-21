@@ -22,19 +22,17 @@ learn.tree.rec <- function(df, depth) {
   if (pure(df[, length(df)]) || length(colnames(df)) == 1) {
     new("Leaf", label = as.numeric(majority(df[, length(df)])))
   } else {    
-    # Recursion
     ce <- cond.entropy(df)
     min.attr.index <- which.min(ce)
     
-    # New implementation
+    # Recursive call
     df.zero <- df[df[, min.attr.index] == 0, ]
     tree.zero <- learn.tree.rec(df.zero[, -min.attr.index], depth + 1)
     
     df.one <- df[df[, min.attr.index] == 1, ]
     tree.one <- learn.tree.rec(df.one[, -min.attr.index], depth + 1)
     
-    # Recursive call
-    new("Branch", attr = colnames(df[min.attr.index]), zero = tree.zero, one = tree.one)
+    new("Branch", attr = colnames(df[min.attr.index]), zero = tree.zero, one = tree.one, depth = depth)
   }
 }
 

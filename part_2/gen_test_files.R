@@ -18,7 +18,9 @@ test = subset(df, split==FALSE)
 
 # Learn with prebuilt package
 library(rpart)
+library(rpart.plot)
 tree.model.1 <- rpart(V10 ~ ., data = train)
+prp(tree.model.1)
 
 # Accuracy
 
@@ -35,6 +37,7 @@ t <- table(pred.test.1, test$V10)
 # Learn with learn_tree.R
 source("learn_tree.R")
 tree.model.2 <- learn.tree(train)
+cat(toString(tree.model.2))
 
 ## Predict train
 train.pred <- predict.tree(tree.model.2, train)

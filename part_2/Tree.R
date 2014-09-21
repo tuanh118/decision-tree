@@ -3,7 +3,7 @@ setClass("Tree")
 setClass("Leaf", contains = "Tree",
          representation(label = "numeric"))
 setClass("Branch", contains =  "Tree",
-         representation(attr = "character", zero = "Tree", one = "Tree"))
+         representation(attr = "character", zero = "Tree", one = "Tree", depth = "numeric"))
 
 # Print
 setGeneric("toString", function(tree) standardGeneric("toString"))
@@ -15,13 +15,16 @@ setMethod(toString,
 setMethod(toString,
           signature = "Branch",
           function(b) {
-            result <- paste(b@attr, "= 0:")
-            if (class(b@zero) == "Branch") result <- paste(result, "\n|")
-            result <- paste(result, toString(b@zero))
+            margin <- paste(rep("| ", b@depth), collapse = "")
+            #margin <- paste("level:", b@depth)
+
+	          result <- paste(margin, b@attr, " = 0 : ", sep = "")
+            if (class(b@zero) == "Branch") result <- paste(result, "\n")
+            result <- paste(result, toString(b@zero), sep = "")
             
-            result <- paste(result, b@attr, " = 1:", sep = "")
-            if (class(b@one) == "Branch") result <- paste(result, "\n|")
-            result <- paste(result, toString(b@one))
+            result <- paste(result, margin, b@attr, " = 1 : ", sep = "")
+            if (class(b@one) == "Branch") result <- paste(result, "\n")
+            result <- paste(result, toString(b@one), sep = "")
             
             result
           })
