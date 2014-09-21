@@ -1,8 +1,9 @@
 # Test
-- [ ] handle any binary classificiation task with any number of binary-valued attributes
+- [X] handle any binary classification task with any number of binary-valued attributes
 - [x] command-line arguments
-- [ ] ignore empty lines in input files
+- [X] ignore empty lines in input files
 
 # Tasks
-- [ ] print decision tree to stdout
+- [X] print decision tree to stdout
+- [ ] ask TA about 50/50 cases
 - [ ] plot a learning curve

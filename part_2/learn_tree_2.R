@@ -1,14 +1,10 @@
-source("Tree.R")
-source("cond_entropy.R")
-
 # A function that takes a dataframe of the root and a list of
 #   available attributes as input, then recursively learns a 
 #   decision tree from that root using the ID3 algorithm
-learn.tree <- function(df) {
-  learn.tree.rec(df, 0)
-}
-
-learn.tree.rec <- function(df, depth) {
+learn.tree.2 <- function(df, depth) {
+  source("Tree.R")
+  source("cond_entropy.R")
+  
   # Remove attributes with only 1 value
   df <- as.data.frame(df)
   unique.values <- apply(df, MARGIN = 2, FUN = function(col) length(unique(col)))
@@ -22,17 +18,19 @@ learn.tree.rec <- function(df, depth) {
   if (pure(df[, length(df)]) || length(colnames(df)) == 1) {
     new("Leaf", label = as.numeric(majority(df[, length(df)])))
   } else {    
+    # Recursion
     ce <- cond.entropy(df)
     min.attr.index <- which.min(ce)
     
-    # Recursive call
+    # New implementation
     df.zero <- df[df[, min.attr.index] == 0, ]
-    tree.zero <- learn.tree.rec(df.zero[, -min.attr.index], depth + 1)
+    tree.zero <- learn.tree.2(df.zero[, -min.attr.index], depth + 1)
     
     df.one <- df[df[, min.attr.index] == 1, ]
-    tree.one <- learn.tree.rec(df.one[, -min.attr.index], depth + 1)
+    tree.one <- learn.tree.2(df.one[, -min.attr.index], depth + 1)
     
-    new("Branch", attr = colnames(df[min.attr.index]), zero = tree.zero, one = tree.one, depth = depth)
+    # Recursive call
+    new("Branch", attr = colnames(df[min.attr.index]), zero = tree.zero, one = tree.one)
   }
 }
 

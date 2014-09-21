@@ -44,8 +44,10 @@ entropy <- function(dist) {
   if (sum(dist < 0) > 0) stop("Invalid probability distribution: Negative value")
   
   # Verify that sum of probabilities in the input distribution is 1
-  if (sum(dist) != 1) stop("Invalid probability distribution: Sum not equal to 1")
-  
+  if (sum(dist) != 1) {
+    print(dist)
+    stop("Invalid probability distribution: Sum not equal to 1")
+  }
   # Compute a vector of entropy components
   ent.comps <- -dist * log2(dist)
   

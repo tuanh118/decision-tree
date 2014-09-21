@@ -11,7 +11,7 @@ df <- data.frame(nigeria  = c(1, 0, 0, 1, 0, 1, 0, 1, 0, 1),
 #df
 
 ## Learn a tree model
-#learn.tree(df, 0)
+learn.tree(df, 0)
 
 # Training set
 train <- read.table("train.dat", header = T)
