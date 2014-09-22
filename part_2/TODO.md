@@ -6,4 +6,4 @@
 # Tasks
 - [X] print decision tree to stdout
 - [X] ask TA about 50/50 cases
-- [ ] plot a learning curve
+- [X] plot a learning curve
