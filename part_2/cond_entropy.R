@@ -1,3 +1,8 @@
+# cond_entropy.R: A file that contains a function to compute conditional entropy
+#   values for a list of avaialble attributes. This function is supported by 
+#   a function to compute simple entropy value and a function to compute 
+#   conditional entropy value for 1 attribute
+
 # A function that takes a data frame and a vector of available attributes, 
 #   then returns a vector of conditional entropy values corresponding to
 #   the vector of attributes
@@ -38,7 +43,7 @@ uni.cond.entropy <- function(attr, class) {
 
 # A function that takes a probability distribution vector as input 
 #   and produce the entropy value of that distribution
-# Note: Assume 0lg0 = 0
+# Note: Assume 0lg0 = 0 to make the algorithm work
 entropy <- function(dist) {  
   # Verify that none of the probabilities is negative
   if (sum(dist < 0) > 0) stop("Invalid probability distribution: Negative value")
