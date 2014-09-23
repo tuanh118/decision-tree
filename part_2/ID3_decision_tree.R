@@ -2,8 +2,8 @@
 #   It accepts two arguments that specify a training file and a test file.
 #   It prints out the learned tree along with accuracies of the tree on
 #   the training and test sets.
-library(methods)
 options(warn = -1)
+library(methods)
 
 # Read arguments
 args <- commandArgs(trailingOnly = T)
